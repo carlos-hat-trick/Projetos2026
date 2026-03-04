@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meu Site Flask</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+</head>
+
+
+<body style="background-image: url('https://pbs.twimg.com/media/FMUSP7BWQAEx0wg.jpg');">
+
+<div class="container">
+    <h1>{{ titulo }}</h1> <img src="https://images7.memedroid.com/images/UPLOADED636/6277bab80fd6d.jpeg" alt="é sobre isso e ta tudo bem" height="250px" width="250px">
+        <p>E Agora Giovanni ????????</p>
+            <button onclick="minhaFuncao()">Clique em mim</button>
+            <button onclick="dosprediobaby()">dos predios baby</button>
+            <div id="baby"></div>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+
+</html>
