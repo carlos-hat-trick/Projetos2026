@@ -49,3 +49,26 @@ window.HeroFade_Object = {};
 	$( that.init );
 
 })( window, jQuery, window.HeroFade_Object );
+
+
+const body = document.body;
+
+document.querySelectorAll(".album-card").forEach(card => {
+    card.addEventListener("click", () => {
+
+        body.classList.remove("era-caos-theme", "era-dlx-theme", "era-spam-theme");
+
+        if(card.classList.contains("era-caos")){
+            body.classList.add("era-caos-theme");
+        }
+
+        if(card.classList.contains("era-dlx")){
+            body.classList.add("era-dlx-theme");
+        }
+
+        if(card.classList.contains("era-spam")){
+            body.classList.add("era-spam-theme");
+        }
+
+    });
+});

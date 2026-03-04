@@ -1,21 +1,46 @@
 <!DOCTYPE html>
-
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAOS</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
-    <header>
-        <h1 class="titulo">{{ titulo }}</h1>
+
+    <header class="main-header">
+        <h1 class="titulo glitch" data-text="{{ titulo }}">
+            {{ titulo }}
+        </h1>
     </header>
-        
 
-{% block content %}{% endblock %}
+    {% block content %}{% endblock %}
 
+    <footer class="footer">
+        <p>© 2026 CAOS ERA — Fan Page Underground</p>
+    </footer>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+
 </body>
+
+<div class="smoke-container">
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+</div>
+
+<div class="graffiti-layer">
+    <span class="tag tag1">CAOS</span>
+    <span class="tag tag2">SPAM</span>
+    <span class="tag tag3">NÃO CURTE LOVE</span>
+    <span class="tag tag4">ERA DLX</span>
+</div>
 </html>

@@ -1,88 +1,394 @@
 :root {
-  --font-sans: 'Roboto Condensed', sans-serif;
-  --font-serif: 'Playfair Display', serif;
+  --neon-green: #39ff14;
+  --neon-purple: #a020f0;
+  --dark-bg: #0a0a0a;
+  --gray-dark: #111;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: 
+    linear-gradient(rgba(0,0,0,.85), rgba(0,0,0,.95)),
+    url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+  background-size: cover;
+  color: white;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* HEADER */
+
+.main-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 20px;
+  text-align: center;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 1px solid var(--neon-purple);
 }
 
 .titulo {
-  font: 50px "Courier New", monospace;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 5px;
+  color: var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green);
+}
+
+/* GLITCH EFFECT */
+
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.glitch::before {
+  color: var(--neon-purple);
+  animation: glitchTop 1s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  color: var(--neon-green);
+  animation: glitchBottom 1.2s infinite linear alternate-reverse;
+}
+
+@keyframes glitchTop {
+  0% { clip-path: inset(0 0 85% 0); transform: translate(-2px, -2px); }
+  50% { clip-path: inset(0 0 60% 0); transform: translate(2px, 2px); }
+  100% { clip-path: inset(0 0 85% 0); transform: translate(-2px, -2px); }
+}
+
+@keyframes glitchBottom {
+  0% { clip-path: inset(80% 0 0 0); transform: translate(2px, 2px); }
+  50% { clip-path: inset(60% 0 0 0); transform: translate(-2px, -2px); }
+  100% { clip-path: inset(80% 0 0 0); transform: translate(2px, 2px); }
+}
+
+/* HERO */
+
+.hero {
+  margin-top: 120px;
+  height: 100vh;
+  position: relative;
+  background: no-repeat center / cover;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
-.hero {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  background: no-repeat center / cover;
-  overflow: hidden;
-  backface-visibility: hidden;
-}
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(62,92,135,.5);
+  background: linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,.9));
 }
 
 .hero-container {
   position: relative;
   z-index: 2;
-  padding: 30px 50px;
-  transition: 1.2s cubic-bezier(.7,0,.3,1);
-}
-
-.hero-container p {
-  font: bold 13px var(--font-sans);
-  color: #fff;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  opacity: .8;
+  padding: 50px;
+  max-width: 800px;
 }
 
 .hero-title {
-  font: 500 10vw var(--font-serif);
-  color: #fff;
-  line-height: 1.1;
-  width: 85%;
+  font-size: 4rem;
+  font-family: 'Orbitron';
+  color: var(--neon-purple);
+  text-shadow: 0 0 15px var(--neon-purple);
+  margin: 20px 0;
 }
 
 .hero-button {
   display: inline-block;
-  margin-top: 30px;
-  padding: 20px 90px;
-  background: rgba(255,255,255,.8);
-  color: #44575b;
-  font-size: 24px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  padding: 15px 50px;
+  background: transparent;
+  border: 2px solid var(--neon-green);
+  color: var(--neon-green);
   text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 3px;
+  transition: 0.3s;
 }
+
+.hero-button:hover {
+  background: var(--neon-green);
+  color: black;
+  box-shadow: 0 0 20px var(--neon-green);
+}
+
+/* MAIN CONTENT */
 
 .main-content {
-  width: 60%;
-  padding: 30px 50px;
+  width: 80%;
+  margin: auto;
+  padding: 100px 0;
 }
 
-.main-content p {
-  font: 18px var(--font-serif);
-  line-height: 1.5;
-  color: #25373D;
+.perfil-artista {
+  background: var(--gray-dark);
+  padding: 40px;
+  border-left: 4px solid var(--neon-purple);
+  box-shadow: 0 0 20px rgba(160,32,240,.3);
 }
 
-/* Animação */
-@keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(-12px); }
-  to { opacity: 1; transform: none; }
+.perfil-artista h1,
+.perfil-artista h2 {
+  color: var(--neon-green);
 }
 
-.animate {
-  animation: fadeInLeft .75s cubic-bezier(.2,.3,.25,.9) both;
+.perfil-artista p,
+.perfil-artista li {
+  color: #ccc;
+  line-height: 1.6;
 }
 
-.delay { animation-delay: 1s; }
-.delay-4 { animation-delay: .4s; }
-.delay-5 { animation-delay: .5s; }
-.delay-6 { animation-delay: .6s; }
-.delay-7 { animation-delay: .7s; }
-.delay-8 { animation-delay: .8s; }
+/* TABLE */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th {
+  background: var(--neon-purple);
+  color: white;
+  padding: 10px;
+}
+
+td {
+  border: 1px solid #333;
+  padding: 10px;
+}
+
+/* FOOTER */
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: black;
+  border-top: 1px solid var(--neon-green);
+  color: #888;
+}
+
+
+/* ================= DISC0GRAFIA ================= */
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  letter-spacing: 5px;
+  color: var(--neon-purple);
+}
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.album-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.4s;
+  border: 1px solid #222;
+}
+
+.album-card img {
+  width: 100%;
+  display: block;
+  filter: grayscale(100%) brightness(0.6);
+  transition: 0.5s;
+}
+
+.album-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,.9), transparent);
+}
+
+.album-info h3 {
+  color: var(--neon-green);
+  font-size: 1.5rem;
+}
+
+.album-info p {
+  color: #aaa;
+}
+
+/* HOVER */
+
+.album-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--neon-purple);
+}
+
+.album-card:hover img {
+  filter: grayscale(0%) brightness(1);
+}
+
+
+/* ================= ERAS ================= */
+
+.era-caos-theme {
+  --neon-purple: #a020f0;
+  --neon-green: #39ff14;
+}
+
+.era-dlx-theme {
+  --neon-purple: #ff003c;
+  --neon-green: #ffcc00;
+  background: #140000;
+}
+
+.era-spam-theme {
+  --neon-purple: #00f0ff;
+  --neon-green: #ffffff;
+  background: #000814;
+}
+
+/* ================= VHS EFFECT ================= */
+
+.vhs-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  z-index: 9999;
+}
+
+/* leve tremida */
+
+body {
+  animation: vhsShake 0.3s infinite alternate;
+}
+
+@keyframes vhsShake {
+  from { transform: translate(0.3px, -0.3px); }
+  to { transform: translate(-0.3px, 0.3px); }
+}
+
+/* ================= SMOKE EFFECT ================= */
+
+.smoke-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.smoke {
+  position: absolute;
+  bottom: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(160,32,240,0.15) 0%, rgba(0,0,0,0) 70%);
+  animation: smokeRise 25s infinite linear;
+  filter: blur(80px);
+  opacity: 0.6;
+}
+
+.smoke:nth-child(1) {
+  left: 10%;
+  animation-duration: 30s;
+}
+
+.smoke:nth-child(2) {
+  left: 50%;
+  animation-duration: 35s;
+}
+
+.smoke:nth-child(3) {
+  left: 80%;
+  animation-duration: 28s;
+}
+
+@keyframes smokeRise {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-120vh) scale(1.5);
+  }
+}
+
+/* ================= GRAFFITI ================= */
+
+.graffiti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tag {
+  position: absolute;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  opacity: 0.08;
+  transform: rotate(-15deg);
+  text-shadow: 0 0 15px currentColor;
+}
+
+/* posições aleatórias */
+
+.tag1 {
+  top: 20%;
+  left: 5%;
+  color: #39ff14;
+  transform: rotate(-20deg);
+}
+
+.tag2 {
+  top: 60%;
+  left: 70%;
+  color: #a020f0;
+  transform: rotate(15deg);
+}
+
+.tag3 {
+  top: 40%;
+  left: 30%;
+  color: #ff003c;
+  font-size: 4rem;
+}
+
+.tag4 {
+  top: 80%;
+  left: 10%;
+  color: #00f0ff;
+}
+
+.tag {
+  font-family: 'Permanent Marker', cursive;
+}
+
+.tag {
+  animation: graffitiPulse 3s infinite alternate;
+}
+
+@keyframes graffitiPulse {
+  from { opacity: 0.05; }
+  to { opacity: 0.12; }
+}
